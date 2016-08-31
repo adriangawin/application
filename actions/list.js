@@ -2,7 +2,7 @@ var helpers = require("../helpers"),
     template = "list.ejs",
     AWS = require("aws-sdk"),
     configFilePath = "config.json",
-    prefix = "pawel.jablonski";
+    prefix = "files";
 
 var RemoveDirectoryFromName = function(tab){
 	var elements = [];
@@ -18,7 +18,7 @@ exports.action = function(request, callback) {
 
 	AWS.config.loadFromPath(configFilePath);
 	var params = {
-		Bucket: 'lab4-weeia',
+		Bucket: 'bucketadrian',
 		Prefix: prefix
 	};
 	var s3 = new AWS.S3();
