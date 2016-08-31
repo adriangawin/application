@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Aplikacja AWS</title>
+    
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <style>
+    body {
+        padding-top: 150px;
+        /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    }
+    .center-form{
+          margin-left: auto;
+          margin-right: auto;
+          float: none;
+    }
+    </style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+ <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="/">AWS APP</a>
+            </div>
+            <ul class="nav navbar-nav">
+				<li><a class="navbar-brand" href="/">Wgraj plik</a></li>
+                <li class="active"><a href="/createDomain">Utwórz domenę</a></li>                
+                <li><a class="navbar-brand" href="/getItems">Baza Danych</a></li>
+                <li><a class="navbar-brand" href="/list">Lista plików</a></li>
+                <li><a class="navbar-brand" href="/list2">Usuń plik</a></li>
+           </ul>
+           <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://console.aws.amazon.com/sqs/home?region=us-west-2#"><span class="glyphicon glyphicon-user"></span>SQS</a></li>
+           </ul>
+        </div>
+    </nav>
+
+        <center><h1>Domena</h1>
+
+	<% if(name == "Domena już istnieje") { %>
+         <div class="form-group has-warning has-feedback">
+                <label for="inputWarning2">Ostrzeżenie!</label>
+                <input type="text" value="<%= name  %>" style="text-align:center;"  class="form-control" id="inputWarning2">
+                <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+        </div>
+	 <% } else { %>
+        <div class="form-group has-success has-feedback">
+                <label for="inputSuccess2">Operacja wykonana pomyślnie!</label>
+                <input type="text" name="name" <center>value="<%= name  %>" style="text-align:center;" class="form-control" id="inputSuccess2">
+                <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+        </div>
+
+	 <% } %>
+
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+[
+	{"path":"/","action":"index"},
+	{"path":"/list", "action":"list"},
+	{"path":"/send", "action":"send"},
+	{"path":"/createDomain", "action":"createDomain"},
+	{"path":"/getItems", "action":"getItems"},
+	{"path":"/list2", "action":"list2"},	
+	{"path":"/delete", "action":"delete"},
+	{"path":"/status", "action":"status"}
+	
+]

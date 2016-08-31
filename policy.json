@@ -1,0 +1,9 @@
+{	"expiration" : {"day":1},
+	"conditions":
+    [
+	["starts-with", "$key", "files/"],
+    	{"bucket": "bucketadrian"},
+    	{"acl": "private"},
+    	["content-length-range", 0, 1048576]
+    ]
+}

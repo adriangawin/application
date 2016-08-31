@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "async": "^0.2.10",
+    "aws-sdk": "^2.2.36",
+    "ejs": "^1.0.0",
+    "moment": "^2.5.1",
+    "queuemanager": "^0.2.6",
+    "webs-weeia": "0.0.2"
+  }
+}
