@@ -4,8 +4,7 @@ fs = require('fs');
 //accessKeyId ... klucze do amazona 
 configFilePath = "./config.json";
 template = "status.ejs";
-prefix = "pawel.jablonski";
-//zawiera funkcje pomocnicze generowania skrótów robienia z jonson obiektu ...
+prefix = "files";
 var helpers = require("../helpers");
 
 var task =  function(request, callback){
@@ -15,7 +14,7 @@ var task =  function(request, callback){
 
 	//console.log(key);	
 	var paramsXXXX = {
-		DomainName: 'PawelKrzysiek', //required 
+		DomainName: 'Adrian', //required 
 		ItemName: 'ITEM001', // required 
 		AttributeNames: [
 			key,
