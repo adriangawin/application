@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Projekt Adrian</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Adrian">
+
+<style>
+body {
+  width: 800px;
+  margin: auto;
+}
+.header {
+	background-color: #DDDDDD;
+	padding: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+li a.active {
+    color: white;
+    background-color: #4CAF50;
+}
+
+#tab {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tab td, #tab th {
+
+    padding: 8px;
+}
+
+#tab tr:nth-child(even){background-color: #f2f2f2;}
+
+#tab tr:hover {background-color: #ddd;}
+
+#tab th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
+</head>
+
+<body>
+<div class="header">
+Projekt Adrian Gawinek, Daniel Grad
+</div>
+<div class="menu">
+  <ul>
+    <li><a href="/">Gallery</a></li>
+    <li><a href="/add_file">Add File</a></li>
+  </ul>
+</div>
+<div class="content">
+
+
+  <table id="tab">
+    <% urlList.forEach(function(elem, val) { %>
+    <form action="/send" method="GET">
+      <tr>
+        <td><img src="<%= elem.url %>" height="100px" width="100px"></td>
+        <td><%= elem.name.replace("files/","")  %></td>
+        <td>
+          <input type="hidden" name="keys" value="<%= elem.name %>">
+          <input type="submit" name="Wyślij" value="Rotate">
+        </td>
+      </tr>
+    </form>
+    <% }); %>
+  </table>
+
+
+</div>
+  
+
+</body>
+
+</html>

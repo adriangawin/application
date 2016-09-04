@@ -1,7 +1,7 @@
 var helpers = require("../helpers"),
     template = "getItems.ejs",
     AWS = require("aws-sdk"),
-    domain = "PawelKrzysiek",
+    domain = "Adrian",
     configFilePath = "config.json"
     result = '';
 

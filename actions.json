@@ -1,5 +1,7 @@
 [
-	{"path":"/","action":"index"},
+	{"path":"/","action":"main"},
+	{"path":"/add_file","action":"add_file"},
+	{"path":"/rec_s3","action":"rec_s3"},
 	{"path":"/list", "action":"list"},
 	{"path":"/send", "action":"send"},
 	{"path":"/createDomain", "action":"createDomain"},

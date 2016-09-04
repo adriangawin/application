@@ -4,6 +4,7 @@
 	["starts-with", "$key", "files/"],
     	{"bucket": "bucketadrian"},
     	{"acl": "private"},
+    	{"succes_action_redirect":"http://localhost:8080/rec_s3"},
     	["content-length-range", 0, 1048576]
     ]
 }

@@ -7,6 +7,11 @@ var AWS = require("aws-sdk");
 var configFilePath = "config.json";
 exports.action = function(request, callback) {
 
+	if ( request.method == "POST" ) {
+		console.log("recived POST");
+		console.log(request);
+	}
+
 	var policyData = helpers.readJSONFile(POLICY_FILE);
 	var policy = new Policy(policyData);
 	var s3Form = new S3Form(policy);
