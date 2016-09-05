@@ -2,12 +2,12 @@
 	{"path":"/","action":"main"},
 	{"path":"/add_file","action":"add_file"},
 	{"path":"/rec_s3","action":"rec_s3"},
+	{"path":"/check", "action":"check"},
 	{"path":"/list", "action":"list"},
-	{"path":"/send", "action":"send"},
+	{"path":"/sendS3", "action":"sendS3"},
 	{"path":"/createDomain", "action":"createDomain"},
 	{"path":"/getItems", "action":"getItems"},
 	{"path":"/list2", "action":"list2"},	
-	{"path":"/delete", "action":"delete"},
-	{"path":"/status", "action":"status"}
+	{"path":"/delete", "action":"delete"}
 	
 ]

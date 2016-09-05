@@ -1,40 +1,39 @@
 var AWS = require("aws-sdk");
 var os = require("os");
 fs = require('fs');
-//accessKeyId ... klucze do amazona 
 configFilePath = "./config.json";
-template = "status.ejs";
+template = "check.ejs";
 prefix = "files";
 var helpers = require("../helpers");
 
-var task =  function(request, callback){
+exports.action =  function(request, callback){
 	
 	AWS.config.loadFromPath('./config.json');
-	var key = request.query.key;
+	var file = request.query.file;
 
-	//console.log(key);	
+
 	var paramsXXXX = {
-		DomainName: 'Adrian', //required 
-		ItemName: 'ITEM001', // required 
+		DomainName: 'Adrian',
+		ItemName: 'ITEM001', 
 		AttributeNames: [
-			key,
+			file,
 		],
 	};
 	var simpledb = new AWS.SimpleDB();
 	simpledb.getAttributes(paramsXXXX, function(err, data) {
 		if (err) {
-			console.log(err, err.stack); // an error occurred
+			console.log(err, err.stack); 
 		}
 		else {		
 			if(data.Attributes[0].Value == "yes"){
 				console.log("Przetworzono: " + data.Attributes[0].Value);				
-				callback(null, {template: template, params:{send:true, key:key, prefix:prefix}});
+				callback(null, {template: template, params:{status:true, file:file, prefix:prefix}});
 			}else{
 				console.log("Przetworzono: " + data.Attributes[0].Value);
-				callback(null, {template: template, params:{send:false, key:key, prefix:prefix}});
+				callback(null, {template: template, params:{status:false, file:file, prefix:prefix}});
 			}
 			
 		}
 	});	
 }
-exports.action = task
+

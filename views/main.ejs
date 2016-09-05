@@ -86,7 +86,7 @@ Projekt Adrian Gawinek, Daniel Grad
 
   <table id="tab">
     <% urlList.forEach(function(elem, val) { %>
-    <form action="/send" method="GET">
+    <form action="/sendS3" method="GET">
       <tr>
         <td><img src="<%= elem.url %>" height="100px" width="100px"></td>
         <td><%= elem.name.replace("files/","")  %></td>

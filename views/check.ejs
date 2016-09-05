@@ -46,7 +46,6 @@ li a.active {
     background-color: #4CAF50;
 }
 
-
 </style>
 </head>
 
@@ -63,15 +62,21 @@ Projekt Adrian Gawinek, Daniel Grad
 <div class="content">
 
 
-  <form action="https://<%= bucket %>.s3.amazonaws.com/" method="POST" enctype="multipart/form-data">
+  <p><%= file.replace(prefix+"/","") %></p>
 
-    <% fields.forEach(function(elem){ %>
-      <input type="hidden" name="<%= elem.name %>" value="<%= elem.value %>"/>
-    <% }); %>
-    <input type="file" name="file">
-    <input type="submit" value="Wyślij"/>
 
+<% if ( ! status ) { %>
+<p>Plik jeszcze nie gotowy.</p>
+<% } else { %>
+<p>Gotowe!</p>
+<% } %>
+
+  <form action="/check" method="GET"> 
+    <input type="hidden" value="<%= file%>" name="file"/>
+    <input type="submit" name="Status" value="Sprawdź status">
   </form>
+
+
 
 
 </div>

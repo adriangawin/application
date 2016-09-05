@@ -16,7 +16,7 @@ exports.action = function(request, callback) {
 		sdb.createDomain(paramsDB, function(err, data) {
 		  if (err) console.log(err, err.stack);
 		  else 
-                   	 result = "Domena o takiej nazwie została utworzona";          
+             result = "Domena o takiej nazwie została utworzona";          
 		 });
 	}; 
        

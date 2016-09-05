@@ -9,14 +9,6 @@ var Promise = require("promise");
 var AWS = require("aws-sdk");
 
 
-var RemoveDirectoryFromName = function(tab){
-	var elements = [];
-	tab.forEach(function(el){
-	   if(el.Key !== prefix+'/')
-	     elements.push(el);
-	});
-	return elements;
-}
 
 exports.action = function(request, callback) {
 	var error = 0;
@@ -41,29 +33,27 @@ exports.action = function(request, callback) {
 	};
 	var s3 = new AWS.S3();
 
+	var urlList = [];
 
-    var promise = new Promise(function (resolve, reject) {
-        var urlList = [];
-        s3.listObjects(params, function (err, data) {
-            if (err) {
-                return err;
-            }
-            data.Contents.forEach(function (elem) {
-                if (elem.Key !== prefix+'/') {
-                    var params = {Bucket: 'bucketadrian', Key: elem.Key};
-                    s3.getSignedUrl('getObject', params, function (err, url) {
-                        var elemet = {
-                            name: elem.Key,
-                            url: url
-                        }
-                        urlList.push(elemet);
-                    });
-                }
-            });
-            resolve(urlList);
-        })
-    });
-    promise.then(function (urlList) {
+    s3.listObjects(params, function (err, data) {
+        if ( err ) {
+            return err;
+        }
+        else {
+        	data.Contents.forEach(function (elem) {
+	            if (elem.Key !== prefix+'/') {
+	                var params = {Bucket: 'bucketadrian', Key: elem.Key};
+	                s3.getSignedUrl('getObject', params, function (err, url) {
+	                    var elemet = {
+	                        name: elem.Key,
+	                        url: url
+	                    }
+	                    urlList.push(elemet);
+	                });
+	            }
+	        });
+
+        }
         callback(null, {
         	template: template, 
         	params: {
@@ -73,47 +63,4 @@ exports.action = function(request, callback) {
         	}
         });
     });
-
-
-
-
-	// var urlList = [];
-	// s3.listObjects(params, function(err, data) {
-	// 	if(request.query.key !== null)
-	// 		var uploaded = request.query.key;
-
- //        var urlList = [];
- //        s3.listObjects(params, function (err, data) {
- //            if (err) {
- //                return err;
- //            }
- //            data.Contents.forEach(function (elem) {
- //                if (elem.Key !== 'andrzej.prokopczyk/') {
- //                    var params = {Bucket: 'lab4-weeia', Key: elem.Key};
- //                    s3.getSignedUrl('getObject', params, function (err, url) {
- //                        var elemet = {
- //                            name: elem.Key,
- //                            url: url
- //                        }
- //                        urlList.push(elemet);
- //                    });
- //                }
- //            });
- //            resolve(urlList);
- //        })
- //    });
-
-	// 	callback(null, {
-	// 		template: template, 
-	// 		params:{
-	// 			elements:RemoveDirectoryFromName(data.Contents), 
-	// 			//elements:data.Contents,
-	// 			uploaded: uploaded, 
-	// 			folder: folder,
-	// 			urlList: urlList,
-	// 			error: error
-	// 		}
-	// 	});
-	// });
-
 }
